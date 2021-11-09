@@ -1,10 +1,16 @@
+#Forwarding.py
+#Forward chaining algorithm to dtermine if a symbol is True based on a set of given statements
+#Takes statements in the form of characters: P=>Q, L^M=>Q, A, B etc. 
+#** Will break if put in empty imput***
+#Class KB
+#This class represents each statement in the total KB, it will have a set of premises, and a conclusion
+
 class KB:
     def __init__(self) -> None:
         self.premise = [] 
         self.conclusion = ""
         self.count = 0
         self.sentence = ""
-
 
 agenda = [] 
 
@@ -86,7 +92,7 @@ def solveQuery(KB, query):
         if inferred[poppedValue] == False: #make sure to not get in a loop
             inferred[poppedValue] == True
             for KBStatement in KB:
-                if(poppedValue in KBStatement.premise): #looking for statements that use current agenda value
+                if(poppedValue in KBStatement.premise): #looking for premises that use current agenda value
                     print(KBStatement.sentence +", ",end="")
                     print("count: " + str(KBStatement.count))
                     print("Premise "+ str(poppedValue)+ " matched agenda")
